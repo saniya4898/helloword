@@ -7,7 +7,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
     {
         // auto start session
         Yaf_Session::getInstance()->start();
-        Yaf_Loader::getInstance()->registerLocalNameSpace(array( "system"));
+        
         // auto load config data
         Yaf_Registry::set('GlobalConfig', Yaf_Application::app()->getConfig());
         

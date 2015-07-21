@@ -3,6 +3,8 @@
 class I18nModel
 {
 
+    private $redis;
+
     private $app;
 
     private $lang;
@@ -10,14 +12,12 @@ class I18nModel
     private $key;
 
     private $fieldMd5;
-    
-    private $redis;
 
-    public function __construct($app, $lang)
+    public function __construct($redis, $app, $lang)
     {
+        $this->redis = $redis;
         $this->app = $app;
         $this->lang = $lang;
-        $this->redis = Yaf_Registry::get('Redis');
     }
 
     public function get($module, $field, array $value = array())

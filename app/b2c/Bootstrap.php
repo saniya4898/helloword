@@ -22,8 +22,8 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
         Yaf_Registry::set('DbWrite', new Db ( 'mysql:host=' . $this->config->mysql->write->host . ';dbname=' . $this->config->mysql->write->dbname . ';charset=' . $this->config->mysql->write->charset . ';port=' . $this->config->mysql->write->port . '', $this->config->mysql->write->username, $this->config->mysql->write->password));
         
         // auto load model
-        Yaf_Registry::set('I18n', new I18nModel($this->config->application->name, 'cn'));
-        Yaf_Registry::set('Cache', new CacheModel($this->config->application->name, 'cn'));
+        Yaf_Registry::set('I18n', new I18nModel($redis, $this->config->application->name, 'cn'));
+        Yaf_Registry::set('Cache', new CacheModel($redis, $this->config->application->name));
         
         // auto load plugin
         $dispatcher->registerPlugin(new GlobalPlugin());

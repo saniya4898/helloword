@@ -21,10 +21,10 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
         Yaf_Registry::set('dbRead', new Db ( 'mysql:host=' . $this->config->mysql->read->host . ';dbname=' . $this->config->mysql->read->dbname . ';charset=' . $this->config->mysql->read->charset . ';port=' . $this->config->mysql->read->port . '', $this->config->mysql->read->username, $this->config->mysql->read->password));
         Yaf_Registry::set('dbWrite', new Db ( 'mysql:host=' . $this->config->mysql->write->host . ';dbname=' . $this->config->mysql->write->dbname . ';charset=' . $this->config->mysql->write->charset . ';port=' . $this->config->mysql->write->port . '', $this->config->mysql->write->username, $this->config->mysql->write->password));
         
-        // auto load global model
-        Yaf_Registry::set('model', new GlobalModel());
+        // auto load model
+        Yaf_Registry::set('I18n', new I18nModel($this->config->application->name, 'cn'));
         
-        // auto load global plugin
+        // auto load plugin
         $dispatcher->registerPlugin(new GlobalPlugin());
         
         // auto save request

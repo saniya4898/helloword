@@ -10,7 +10,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
         
         // auto load config data
         $config = Yaf_Application::app()->getConfig();
-        Yaf_Registry::set('GlobalConfig', $config);
+        Yaf_Registry::set('config', $config);
         
         //auto load redis
         $redis = new Redis();
@@ -22,10 +22,10 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
         Yaf_Registry::set('dbWrite', new Db ( 'mysql:host=' . $config->mysql->write->host . ';dbname=' . $config->mysql->write->dbname . ';charset=' . $config->mysql->write->charset . ';port=' . $config->mysql->write->port . '', $config->mysql->write->username, $config->mysql->write->password));
         
         // auto load global model
-        Yaf_Registry::set('model', new model());
+        Yaf_Registry::set('model', new GlobalModel());
         
         // auto load global plugin
-        $dispatcher->registerPlugin(new plugin());
+        $dispatcher->registerPlugin(new GlobalPlugin());
         
         // auto save request
         $request = $dispatcher->getRequest();

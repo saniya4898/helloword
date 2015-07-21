@@ -22,17 +22,6 @@ class Tools
         return html_entity_decode((string) $string, ENT_QUOTES, 'utf-8');
     }
 
-    public static function redirect($url, $httpResponseCode = false)
-    {
-        if (empty($httpResponseCode)) {
-            header('Location: ' . $url);
-        } else {
-            header('Location: ' . $url, true, (int) $httpResponseCode);
-        }
-        session_write_close();
-        exit();
-    }
-
     public static function dateFormat($date, $currentFormat = 'Y-m-d H:i:s', $targetFormat = 'Y-m-d H:i:s')
     {
         $dataTime = DateTime::createFromFormat($currentFormat, $date);
